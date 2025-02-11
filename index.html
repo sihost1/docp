@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>docp</title>
+    <script>
+        (function() {
+            // Extract 'v' parameter from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const version = urlParams.get('v');
+
+            if (version) {
+                // Base components for constructing the dynamic URL
+                const pdfViewerBase = "https://sihost1.github.io/docv/web/viewer.html";
+                const rawBaseURL = "https://raw.githubusercontent.com/sihost1";
+
+                // Build the dynamic URL
+                const pdfURL = `${rawBaseURL}/b_${version}/main/debug/make/api/v1/reply/1/0/0/1/1/0/1/1/1/0/1.pdf`;
+                const fullRedirectURL = `${pdfViewerBase}?file=${pdfURL}`;
+
+                // Redirect to the constructed URL
+                window.location.href = fullRedirectURL;
+            } else {
+                document.body.innerHTML = "<h1>Error: No version parameter provided.</h1>";
+            }
+        })();
+    </script>
+</head>
+<body></body>
+</html>
